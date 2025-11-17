@@ -12,7 +12,8 @@ class Quiz extends React.Component {
         score: 0,
         count: 0
     };
-    
+    //current score system; refactor into controller
+    /*
     incrementScore = () => {
         this.setState({
             score: this.state.score + 1
@@ -28,7 +29,7 @@ class Quiz extends React.Component {
             count: this.state.count + 1
         });
         alert("Sorry - not correct");
-    };
+    };*/
 
     handleSubmit = () => {
         my_state.my_score = this.state.score;

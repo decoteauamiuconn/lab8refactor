@@ -5,12 +5,13 @@ import my_state from './my_state';
 
 import  my_questions from '../model/basic_questions.json';
 
+import quizController from '../controller/controller.js';
+
 
 class Quiz extends React.Component {
 
     state = {
-        score: 0,
-        count: 0
+        answers: {}
     };
     //current score system; refactor into controller
     /*
@@ -30,41 +31,35 @@ class Quiz extends React.Component {
         });
         alert("Sorry - not correct");
     };*/
+    
+
+
+
+    state = {
+        answers: {}, // Store selected answers: { questionId: isCorrect }
+    };
+
+    handleAnswerSelect = (questionId, isCorrect) => {
+        this.setState({
+            answers: { ...this.state.answers, [questionId]: isCorrect }
+        });
+    };
 
     handleSubmit = () => {
-        my_state.my_score = this.state.score;
-        my_state.my_count = this.state.count;
+        // Pass all answers to controller for scoring
+        const results = quizController.scoreAnswers(this.state.answers);
         
-        alert("Total score: " + this.state.score + "/" + this.state.count);
-    }
-    
+        //Pass to results.js 
+        alert(`You answered ${results.score} out of ${results.count} questions correctly.`);
+        
+    };
+
     render() {
-        return(
-           <div style={quizPageStyle}>
-            <h1>My Questions</h1>
-                {my_questions.map((quest) => (
-                <div> 
-                    <h2>{quest["question"]}</h2>
-                        {quest["answers"].map((ans) => (
-                            <div>
-                                <label>
-                                <input  
-                                        type = "radio"
-                                        name = { quest["id"] }
-                                        key = { quest["id"] }
-                                        onClick = { ans["isCorrect"] ? this.incrementScore : this.dontIncrementScore }
-                                        value = { ans["isCorrect"] } /> 
-                                    { ans["answer"] }
-                                </label> 
-                                <br />
-                            </div>
-                        ))}
-                    
-                </div>
-                ))}
-                 <br />
-                <button onClick={this.handleSubmit} >Done</button>
-        </div>
+        return (
+            <div>
+                {/* Render questions with handleAnswerSelect callback */}
+                <button onClick={this.handleSubmit}>Done</button>
+            </div>
         );
     }
 }

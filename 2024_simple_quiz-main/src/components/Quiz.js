@@ -36,7 +36,7 @@ class Quiz extends React.Component {
 
 
     state = {
-        answers: {}, // Store selected answers: { questionId: isCorrect }
+        answers: {}, // Store selected answers: 
     };
 
     handleAnswerSelect = (questionId, isCorrect) => {
@@ -65,3 +65,6 @@ class Quiz extends React.Component {
 }
 
 export default Quiz;
+
+//TODO: check for other alerts, check imports so quiz/controller can call each other
+

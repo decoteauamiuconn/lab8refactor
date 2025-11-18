@@ -46,3 +46,6 @@ class QuizController {
 
 const quizController = new QuizController();
 export default quizController;
+
+//TODO: check for other alerts, check imports so quiz/controller can call each other
+

@@ -1,4 +1,4 @@
-"""TODO: "refactor the scoring functionality into a controller folder"
+/*TODO: "refactor the scoring functionality into a controller folder"
 "build on your current quiz system by adding a page (e.g., /results, that displays
  the user's total score after they submit their answers. This page should 
  summarize how many questions were answered correctly out of the total number 
@@ -7,7 +7,7 @@
 
 
 
-TODO: switch from alerts to a results page that shows the score summary"""
+TODO: switch from alerts to a results page that shows the score summary*/ //done?
         
         
             

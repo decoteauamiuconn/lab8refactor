@@ -1,6 +1,6 @@
 import React from 'react';
 import quizPageStyle from '../QuizPageStyle';
-
+import { useNavigate } from 'react-router-dom';
 import my_state from './my_state';
 
 import  my_questions from '../model/basic_questions.json';
@@ -45,13 +45,13 @@ class Quiz extends React.Component {
         });
     };
 
+
+
     handleSubmit = () => {
         // Pass all answers to controller for scoring
         const results = quizController.scoreAnswers(this.state.answers);
-        
-        //Pass to results.js 
-        alert(`You answered ${results.score} out of ${results.count} questions correctly.`);
-        
+        this.props.onSubmit(results);
+        this.props.navigate('/results');
     };
 
     render() {

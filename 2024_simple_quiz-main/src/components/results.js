@@ -1,12 +1,17 @@
 //page for displaying results
 import React from 'react';
+import quizPageStyle from '../QuizPageStyle';
 
-const Results = ({ score, total }) => {
-    return (
-        <div>
-            <h2>Your Results</h2>
-            <p>You answered {score} out of {total} questions correctly.</p>
-        </div>
-    );
+
+const Results = ({ results }) => {
+  return (
+    <div style={quizPageStyle}>
+      <h1>Quiz Results</h1>
+      <p>You answered {results.score} out of {results.count} questions correctly.</p>
+      <button onClick={() => window.location.href = '/'}>Take Quiz Again</button>
+    </div>
+  );
 }
+
+
 export default Results;
